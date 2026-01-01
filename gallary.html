@@ -4,25 +4,187 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gallery | New City Plus Hospital</title>
-  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Font Awesome -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f4f6f9;
+      color: #333;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    /* =======================
+       NAVBAR
+    ======================= */
+    .site-header {
+      background: #003366;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+    }
+
+    .logo h1 {
+      font-size: 22px;
+      margin: 0;
+    }
+
+    .logo a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 15px;
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #00b4d8;
+    }
+
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: #00b4d8;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover::after,
+    nav ul li a.active::after {
+      width: 100%;
+    }
+
+    .menu-toggle {
+      display: none;
+      color: #fff;
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        position: absolute;
+        top: 65px;
+        left: 0;
+        width: 100%;
+        background: #003366;
+        display: none;
+      }
+
+      nav ul {
+        flex-direction: column;
+        padding: 20px;
+      }
+
+      nav ul li {
+        margin-bottom: 12px;
+      }
+
+      nav.show {
+        display: block;
+      }
+    }
+
+    /* =======================
+       GALLERY
+    ======================= */
+    .gallery-section {
+      padding: 50px 0;
+    }
+
+    .page-title {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 30px;
+      color: #003366;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-grid img:hover {
+      transform: scale(1.05);
+    }
+
+    /* =======================
+       FOOTER
+    ======================= */
+    footer {
+      background: #003366;
+      color: #fff;
+      text-align: center;
+      padding: 15px 0;
+      margin-top: 50px;
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-  <div class="container">
+<header class="site-header">
+  <div class="container nav-container">
+
     <div class="logo">
-      <h1>
-        <a href="index.html">New City Plus Hospital</a>
-      </h1>
+      <h1><a href="index.html">New City Plus Hospital</a></h1>
     </div>
-    <nav>
+
+    <div class="menu-toggle" id="menuToggle">
+      <i class="fas fa-bars"></i>
+    </div>
+
+    <nav id="mainNav">
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="gallary.html" class="active">Gallery</a></li>
@@ -31,6 +193,7 @@
         <li><a href="contact.html">Contact & Appointments</a></li>
       </ul>
     </nav>
+
   </div>
 </header>
 

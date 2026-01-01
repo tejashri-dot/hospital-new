@@ -1,103 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Doctors | New City Plus Hospital</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body { margin: 0; font-family: 'Poppins', sans-serif; background: #f4f6f9; color: #333; }
-        .container { width: 90%; max-width: 1200px; margin: auto; }
+  <meta charset="UTF-8">
+  <title>Doctors | New City Plus Hospital</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        /* HEADER */
-        header { background: #003366; padding: 15px 0; }
-        header h1 a { color: #fff; text-decoration: none; font-size: 22px; }
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-        /* HERO */
-        .page-header {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1551601651-2a8555f1a136') center/cover;
-            padding: 70px 0;
-            text-align: center;
-            color: #fff;
-        }
-        .page-header h1 { font-size: 36px; margin-bottom: 10px; }
+  <!-- Font Awesome (for menu icon) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-        /* DOCTORS SECTION */
-        .doctors-section { padding: 50px 0; }
-        
-        .dept-heading {
-            margin: 40px 0 20px;
-            font-size: 26px;
-            color: #003366;
-            border-left: 5px solid #0077b6;
-            padding-left: 12px;
-        }
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f4f6f9;
+      color: #333;
+    }
 
-        .doctors-grid {
-            display: grid;
-            /* Creates columns that fit automatically but stops at min 250px */
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            /* Centers the cards if there are only a few in a row */
-            justify-content: center;
-        }
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
 
-        .doctor-card {
-            background: #fff;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-            transition: 0.3s;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            
-            /* --- FIX: PREVENTS CARD FROM GETTING TOO BIG --- */
-            max-width: 300px; 
-            margin: 0 auto; /* Centers card within the grid cell */
-            width: 100%;
-        }
+    /* =======================
+       NAVBAR
+    ======================= */
+    .site-header {
+      background: #003366;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
 
-        .doctor-card:hover { transform: translateY(-6px); }
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+    }
 
-        /* --- FIX: IMAGE SIZING --- */
-        .doctor-img-container {
-            width: 100%;
-            height: 250px; /* Fixed height makes images look uniform and not huge */
-            position: relative;
-            overflow: hidden;
-            border-bottom: 1px solid #eee;
-            background-color: #f0f0f0; /* Placeholder color if image fails */
-        }
+    .logo h1 {
+      font-size: 22px;
+      margin: 0;
+    }
 
-        .doctor-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Ensures image fills the box without stretching */
-            object-position: top; /* Focuses on the face/top of the image */
-        }
+    .logo a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
 
-        .doctor-info { padding: 18px; }
-        .doctor-info h3 { font-size: 18px; margin-bottom: 6px; color: #002244; }
-        .doctor-info p { font-size: 14px; color: #555; }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
 
-        footer {
-            background: #003366;
-            color: #fff;
-            text-align: center;
-            padding: 15px 0;
-            margin-top: 50px;
-        }
-    </style>
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 15px;
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #00b4d8;
+    }
+
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: #00b4d8;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover::after,
+    nav ul li a.active::after {
+      width: 100%;
+    }
+
+    .menu-toggle {
+      display: none;
+      color: #fff;
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        position: absolute;
+        top: 65px;
+        left: 0;
+        width: 100%;
+        background: #003366;
+        display: none;
+      }
+
+      nav ul {
+        flex-direction: column;
+        padding: 20px;
+      }
+
+      nav ul li {
+        margin-bottom: 12px;
+      }
+
+      nav.show {
+        display: block;
+      }
+    }
+
+    /* =======================
+       HERO
+    ======================= */
+    .page-header {
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+      url('https://images.unsplash.com/photo-1551601651-2a8555f1a136') center/cover;
+      padding: 70px 0;
+      text-align: center;
+      color: #fff;
+    }
+
+    .page-header h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    /* =======================
+       DOCTORS
+    ======================= */
+    .doctors-section {
+      padding: 50px 0;
+    }
+
+    .dept-heading {
+      margin: 40px 0 20px;
+      font-size: 26px;
+      color: #003366;
+      border-left: 5px solid #0077b6;
+      padding-left: 12px;
+    }
+
+    .doctors-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .doctor-card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      transition: 0.3s;
+      text-align: center;
+      max-width: 300px;
+      margin: auto;
+    }
+
+    .doctor-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .doctor-img-container {
+      height: 250px;
+      overflow: hidden;
+      background: #f0f0f0;
+    }
+
+    .doctor-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+    }
+
+    .doctor-info {
+      padding: 18px;
+    }
+
+    .doctor-info h3 {
+      font-size: 18px;
+      margin-bottom: 6px;
+      color: #002244;
+    }
+
+    .doctor-info p {
+      font-size: 14px;
+      color: #555;
+    }
+
+    /* =======================
+       FOOTER
+    ======================= */
+    footer {
+      background: #003366;
+      color: #fff;
+      text-align: center;
+      padding: 15px 0;
+      margin-top: 50px;
+    }
+  </style>
 </head>
+
 <body>
 
-<header>
-    <div class="container">
-        <h1><a href="index.html">New City Plus Hospital</a></h1>
+<header class="site-header">
+  <div class="container nav-container">
+
+    <div class="logo">
+      <h1><a href="index.html">New City Plus Hospital</a></h1>
     </div>
+
+    <div class="menu-toggle" id="menuToggle">
+      <i class="fas fa-bars"></i>
+    </div>
+
+    <nav id="mainNav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gallary.html">Gallery</a></li>
+        <li><a href="departments.html">Departments</a></li>
+        <li><a href="doctors.html" class="active">Doctors</a></li>
+        <li><a href="contact.html">Contact & Appointments</a></li>
+      </ul>
+    </nav>
+
+  </div>
 </header>
+
 
 <section class="page-header">
     <div class="container">

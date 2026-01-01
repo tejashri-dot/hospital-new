@@ -1,313 +1,259 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Departments - City General Hospital</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Departments - New City Plus Hospital</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+
+  <!-- NAVBAR CSS (CLEAN – NO DUPLICATION) -->
+  <style>
+    /* ===== NAVBAR ===== */
+    .site-header {
+      background: #003366;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+    }
+
+    .logo h1 {
+      font-size: 22px;
+      margin: 0;
+    }
+
+    .logo a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 15px;
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    nav ul li a:hover,
+    nav ul li a.active {
+      color: #00b4d8;
+    }
+
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: #00b4d8;
+      transition: width 0.3s ease;
+    }
+
+    nav ul li a:hover::after,
+    nav ul li a.active::after {
+      width: 100%;
+    }
+
+    .menu-toggle {
+      display: none;
+      color: #fff;
+      font-size: 22px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        position: absolute;
+        top: 65px;
+        left: 0;
+        width: 100%;
+        background: #003366;
+        display: none;
+      }
+
+      nav ul {
+        flex-direction: column;
+        padding: 20px;
+      }
+
+      nav ul li {
+        margin-bottom: 12px;
+      }
+
+      nav.show {
+        display: block;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<header>
-    <div class="container">
-       <div class="logo">
-          <h1>
-            <a href="index.html">
-              New City Plus Hospital
-            </a>
-          </h1>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="departments.html" class="active">Departments</a></li>
-                <li><a href="doctors.html">Doctors</a></li>
-                <li><a href="contact.html">Contact & Appointments</a></li>
-            </ul>
-        </nav>
+<header class="site-header">
+  <div class="container nav-container">
+    <div class="logo">
+      <h1><a href="index.html">New City Plus Hospital</a></h1>
     </div>
+
+    <div class="menu-toggle" id="menuToggle">
+      <i class="fas fa-bars"></i>
+    </div>
+
+    <nav id="mainNav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gallary.html">Gallery</a></li>
+        <li><a href="departments.html" class="active">Departments</a></li>
+        <li><a href="doctors.html">Doctors</a></li>
+        <li><a href="contact.html">Contact & Appointments</a></li>
+      </ul>
+    </nav>
+  </div>
 </header>
 
 <main>
-    <section class="page-header" style="background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;">
-        <div class="container">
-            <h1>Our Medical Departments</h1>
-            <p>Specialized care across various medical disciplines</p>
+  <!-- PAGE HEADER -->
+  <section
+    class="page-header"
+    style="
+      background: linear-gradient(rgba(44,62,80,.8), rgba(44,62,80,.8)),
+      url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=2070&q=80')
+      center/cover no-repeat;">
+    <div class="container">
+      <h1>Our Medical Departments</h1>
+      <p>Specialized care across all major medical disciplines</p>
+    </div>
+  </section>
+
+  <!-- DEPARTMENTS -->
+  <section class="departments">
+    <div class="container">
+      <div class="departments-grid">
+
+        <!-- CARD -->
+        <div class="department-card">
+          <img src="./Emergency Medicine.png" width="40" />
+          <h3>Emergency Medicine</h3>
+          <p>24/7 emergency and trauma care with rapid-response specialists.</p>
         </div>
-    </section>
 
-    <section class="departments">
-        <div class="container">
-            <div class="departments-grid">
-
-                <div class="department-card">
-                    <div class="dept-icon"><i class="fas fa-heartbeat"></i></div>
-                    <h3>Cardiology</h3>
-                    <p>Comprehensive heart care with advanced diagnostic and treatment options including angioplasty and bypass surgery.</p>
-                </div>
-
-                <div class="department-card">
-                    <div class="dept-icon"><i class="fas fa-brain"></i></div>
-                    <h3>Neurology</h3>
-                    <p>Expert care for disorders of the nervous system and brain with advanced neuroimaging facilities.</p>
-                </div>
-
-                <div class="department-card">
-                    <div class="dept-icon"><i class="fas fa-bone"></i></div>
-                    <h3>Orthopedics</h3>
-                    <p>Treatment for bone, joint, and muscle conditions and injuries including joint replacement surgery.</p>
-                </div>
-
-                <div class="department-card">
-                    <div class="dept-icon"><i class="fas fa-baby"></i></div>
-                    <h3>Pediatrics</h3>
-                    <p>Specialized medical care for infants, children, and adolescents with child-friendly environment.</p>
-                </div>
-
-                <div class="department-card">
-                    <div class="dept-icon"><i class="fas fa-ribbon"></i></div>
-                    <h3>Oncology</h3>
-                    <p>Comprehensive cancer care with cutting-edge treatments including chemotherapy and radiation therapy.</p>
-                </div>
-
-                <div class="department-card">
-                    <div class="dept-icon"><i class="fas fa-ambulance"></i></div>
-                    <h3>Emergency Medicine</h3>
-                    <p>24/7 emergency care for critical and urgent medical conditions with trauma center facilities.</p>
-                </div>
-
-                <div class="department-card">
-                    <div class="dept-icon"><i class="fas fa-eye"></i></div>
-                    <h3>Ophthalmology</h3>
-                    <p>Complete eye care services including cataract surgery, LASIK, and retinal treatments.</p>
-                </div>
-
-                <div class="department-card">
-                    <div class="dept-icon"><i class="fas fa-tooth"></i></div>
-                    <h3>Dentistry</h3>
-                    <p>Comprehensive dental care including cosmetic dentistry, implants, and oral surgery.</p>
-                </div>
-
-                <div class="department-card">
-                    <div class="dept-icon"><i class="fas fa-sun"></i></div>
-                    <h3>Dermatology</h3>
-                    <p>Skin care treatments for various conditions including cosmetic dermatology procedures.</p>
-                </div>
-
-            </div>
+        <div class="department-card">
+          <img src="./General Medicine.png" width="40" />
+          <h3>General Medicine</h3>
+          <p>Comprehensive diagnosis and treatment of adult medical conditions.</p>
         </div>
-    </section>
+
+        <div class="department-card">
+          <img src="./Cardiology.png" width="40" />
+          <h3>Cardiology</h3>
+          <p>Comprehensive heart care and preventive cardiology services.</p>
+        </div>
+
+        <div class="department-card">
+          <img src="./Gynec & Obs.png" width="40" />
+          <h3>Gynecology & Obstetrics</h3>
+          <p>Women's health, pregnancy care, and maternity services.</p>
+        </div>
+
+        <div class="department-card">
+          <img src="./Pediatric.png" width="40" />
+          <h3>Pediatrics</h3>
+          <p>Expert child care from newborns to adolescents.</p>
+        </div>
+
+        <div class="department-card">
+          <img src="./Surgery.png" width="40" />
+          <h3>Surgery</h3>
+          <p>Advanced surgical procedures with modern operation theaters.</p>
+        </div>
+
+        <div class="department-card">
+          <img src="./Endoscopy.png" width="40" />
+          <h3>Endoscopy</h3>
+          <p>Minimally invasive GI diagnostic and therapeutic procedures.</p>
+        </div>
+
+        <div class="department-card">
+          <img src="./Plastic surgery.png" width="40" />
+          <h3>Plastic Surgery</h3>
+          <p>Reconstructive and cosmetic surgical procedures.</p>
+        </div>
+
+        <div class="department-card">
+          <img src="./Orthopedic.png" width="40" />
+          <h3>Orthopedics</h3>
+          <p>Bone, joint, spine, fracture, and sports injury treatments.</p>
+        </div>
+
+        <div class="department-card">
+          <img src="./Urology.png" width="40" />
+          <h3>Urology</h3>
+          <p>Kidney stones and urinary tract treatments.</p>
+        </div>
+
+        <div class="department-card">
+          <img src="./Nephrology.png" width="40" />
+          <h3>Nephrology</h3>
+          <p>Kidney care and chronic kidney disease management.</p>
+        </div>
+
+        <div class="department-card">
+          <img src="./Dermatology.png" width="40" />
+          <h3>Dermatology</h3>
+          <p>Skin, hair, nail, and cosmetic dermatology services.</p>
+        </div>
+
+        <div class="department-card">
+          <img src="./Neurology.png" width="40" />
+          <h3>Neurology</h3>
+          <p>Treatment for brain, nerve, and spine disorders.</p>
+        </div>
+
+        <div class="department-card">
+          <img src="./Physiotherapy.png" width="40" />
+          <h3>Physiotherapy</h3>
+          <p>Rehabilitation and pain management services.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer>
-    <div class="container">
-        <p>&copy;  Design & Developed By Revere Tech Solutions (OPC) Pvt Ltd.</p>
-    </div>
+  <div class="container">
+    <p>&copy; Designed & Developed By Revere Tech Solutions (OPC) Pvt Ltd.</p>
+  </div>
 </footer>
 
 <script src="script.js"></script>
 </body>
-</html> -->
-
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Departments - New City Plus Hospital</title>
-    <link rel="stylesheet" href="styles.css" />
-
-    <!-- Font Awesome Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    />
-  </head>
-  <body>
-    <header>
-      <div class="container">
-        <div class="logo">
-          <h1>
-            <a href="index.html">New City Plus Hospital</a>
-          </h1>
-        </div>
-        <nav>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="departments.html" class="active">Departments</a></li>
-            <li><a href="doctors.html">Doctors</a></li>
-            <li><a href="contact.html">Contact & Appointments</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-
-    <main>
-      <!-- PAGE HEADER -->
-      <section
-        class="page-header"
-        style="
-          background: linear-gradient(
-              rgba(44, 62, 80, 0.8),
-              rgba(44, 62, 80, 0.8)
-            ),
-            url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=2070&q=80')
-              center/cover;
-        "
-      >
-        <div class="container">
-          <h1>Our Medical Departments</h1>
-          <p>Specialized care across all major medical disciplines</p>
-        </div>
-      </section>
-
-      <!-- DEPARTMENTS SECTION -->
-      <section class="departments">
-        <div class="container">
-          <div class="departments-grid">
-            <div class="department-card">
-               <img src="./Emergency Medicine.png" alt="Bone Icon"
-       style="width: 40px; height: 40px; object-fit: contain;">
-              <h3>Emergency Medicine</h3>
-              <p>
-                24/7 emergency and trauma care with rapid-response specialists.
-              </p>
-            </div>
-
-            <div class="department-card">
-             <img src="./General Medicine.png" alt="Bone Icon"
-       style="width: 40px; height: 40px; object-fit: contain;">
-              <h3>General Medicine</h3>
-              <p>
-               Comprehensive diagnosis and treatment of adult medical
-                conditions.
-              </p>
-            </div>
-<div class="department-card">
-  <img src="./Cardiology.png" alt="Bone Icon"
-       style="width: 40px; height: 40px; object-fit: contain;">
-
-  <h3>Cardiology</h3>
-  <p>
-    Comprehensive heart care and preventive cardiology services.
-  </p>
-</div>
-
-
-<div class="department-card">
-              <img src="./Gynec & Obs.png" alt="Bone Icon"
-       style="width: 40px; height: 40px; object-fit: contain;">
-              <h3>Gynecology & Obstetrics</h3>
-              <p>Women's health, pregnancy care, and maternity services.</p>
-            </div>
-
-              <div class="department-card">
-              <img src="./Pediatric.png" alt="Bone Icon"
-       style="width: 40px; height: 40px; object-fit: contain;">
-              <h3>Pediatrics</h3>
-              <p>Expert child care from newborns to adolescents.</p>
-            </div>
-
-            <div class="department-card">
-              <img src="./Surgery.png" alt="Bone Icon"
-       style="width: 40px; height: 40px; object-fit: contain;">
-              <h3>Surgery</h3>
-              <p>
-                Advanced surgical procedures with modern operation theaters.
-              </p>
-            </div>
-
-            <div class="department-card">
-  <img src="./Endoscopy.png" alt="Bone Icon"
-       style="width: 40px; height: 40px; object-fit: contain;">
-  <h3>Endoscopy</h3>
-  <p>Advanced diagnostic and therapeutic procedures for gastrointestinal disorders using minimally invasive techniques.</p>
-</div>
-<div class="department-card">
-  <img src="./Plastic surgery.png" alt="Bone Icon"
-       style="width: 40px; height: 40px; object-fit: contain;">
-  <h3>Plastic Surgery</h3>
-  <p>Reconstructive and cosmetic surgical procedures to restore function, appearance, and confidence.</p>
-</div>
-
-
-            <div class="department-card">     
-  <img src="./Orthopedic.png" alt="Bone Icon"
-       style="width: 40px; height: 40px; object-fit: contain;">
-              <h3>Orthopedics</h3>
-              <p>Bone, joint, spine, fracture, and sports injury treatments.</p>
-            </div>
-
-
-            <div class="department-card">
-              <img src="./Urology.png" alt="Bone Icon"
-       style="width: 40px; height: 40px; object-fit: contain;">
-              <h3>Urology</h3>
-              <p>
-                Treatment for kidney stones, urinary tract issues, and more.
-              </p>
-            </div>
-
-            <div class="department-card">
-             <img src="./Nephrology.png" alt="Bone Icon"
-       style="width: 40px; height: 40px; object-fit: contain;">
-              <h3>Nephrology</h3>
-              <p>
-                Kidney care and chronic kidney disease
-                management.
-              </p>
-            </div>
-
-            <div class="department-card">
-              <img src="./Dermatology.png" alt="Bone Icon"
-       style="width: 40px; height: 40px; object-fit: contain;">
-              <h3>Dermatology</h3>
-              <p>Skin, hair, and nail treatments with cosmetic procedures.</p>
-            </div>
-
-            <div class="department-card">
-             <img src="./Neurology.png" alt="Bone Icon"
-       style="width: 40px; height: 40px; object-fit: contain;">
-              <h3>Neurology</h3>
-              <p>Treatment for brain, nerve, and spine disorders.</p>
-            </div>
-
-            <div class="department-card">
-              <img src="./Physiotherapy.png" alt="Bone Icon"
-       style="width: 40px; height: 40px; object-fit: contain;">
-              <h3>Physiotherapy</h3>
-              <p>
-                Rehabilitation and pain management with expert physiotherapists.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- CONSULTANT PANEL -->
-      <!-- <section class="consultants">
-        <div class="container">
-            <h2>Consultant Panel (Medicine Department)</h2>
-            <ul class="consultant-list">
-                <li>Experienced Physicians</li>
-                <li>Specialists in Internal Medicine</li>
-                <li>Critical Care Experts</li>
-                <li>Senior Medical Consultants</li>
-            </ul>
-        </div>
-    </section> -->
-    </main>
-
-    <footer>
-      <div class="container">
-        <p>
-          &copy; Designed & Developed By Revere Tech Solutions (OPC) Pvt Ltd.
-        </p>
-      </div>
-    </footer>
-
-    <script src="script.js"></script>
-  </body>
 </html>
