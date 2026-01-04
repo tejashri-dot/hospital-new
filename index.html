@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>New City Plus Hospital</title>
 
-  <link rel="stylesheet" href="styles.css" />
+  <!-- <link rel="stylesheet" href="styles.css" /> -->
 
   <!-- Font Awesome -->
   <link
@@ -141,106 +141,161 @@ nav ul li a.active::after {
     display: block;
   }
 }
-/* ===== NAVBAR ===== */
-.site-header {
-  background: #003366;
-  position: sticky;
-  top: 0;
-  z-index: 999;
+ /* MASTER CSS - USED ACROSS ALL PAGES */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Poppins', sans-serif; background: #f4f6f9; color: #333; line-height: 1.6; }
+    .container { width: 90%; max-width: 1200px; margin: auto; }
+    
+    /* NAVBAR - NO BOX HIGHLIGHT, ONLY UNDERLINE */
+    .site-header { background: #003366; position: sticky; top: 0; z-index: 999; }
+    .nav-container { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+    .logo h1 a { color: #fff; text-decoration: none; font-size: 22px; font-weight: 600; }
+    nav ul { list-style: none; display: flex; gap: 25px; }
+    nav ul li a { color: #fff; text-decoration: none; font-size: 15px; padding: 5px 0; position: relative; transition: 0.3s; }
+    nav ul li a:hover, nav ul li a.active { color: #00b4d8; }
+    nav ul li a::after { content: ""; position: absolute; left: 0; bottom: 0; width: 0%; height: 2px; background: #00b4d8; transition: 0.3s; }
+    nav ul li a:hover::after, nav ul li a.active::after { width: 100%; }
+    .menu-toggle { display: none; font-size: 22px; color: #fff; cursor: pointer; }
+
+    /* HERO SECTION */
+    .hero { padding: 100px 0; text-align: center; color: #fff; }
+    .btns { display: inline-block; background: #00b4d8; color: #fff; padding: 12px 30px; border-radius: 5px; text-decoration: none; font-weight: 600; margin-top: 20px; transition: 0.3s; }
+    .btns:hover { background: #0077b6; }
+
+    /* SECTION BASICS */
+    section { padding: 60px 0; }
+    h2.section-title { text-align: center; font-size: 32px; color: #003366; margin-bottom: 40px; }
+    
+    /* CARDS (Used in Services & Departments) */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .card { background: #fff; padding: 30px; border-radius: 12px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.3s; }
+    .card:hover { transform: translateY(-5px); }
+    .card img { width: 50px; height: 50px; object-fit: contain; margin-bottom: 15px; }
+
+    /* UNIFORM GALLERY/DOCTOR IMAGES */
+    .img-box { width: 100%; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 12px; background: #ddd; position: relative; }
+    .img-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* FOOTER */
+    footer { background: #003366; color: #fff; text-align: center; padding: 25px 0; }
+
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      nav { position: absolute; top: 65px; left: 0; width: 100%; background: #003366; display: none; }
+      nav.show { display: block; }
+      nav ul { flex-direction: column; padding: 20px; gap: 15px; }
+    }
+
+
+
+    /* ================= SERVICE CARDS ================= */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 cards per row */
+    gap: 2rem;
 }
 
-.nav-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 0;
+.service-card {
+    background-color: #f8f9fa;
+    padding: 2.5rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+    border: 1px solid #e9ecef;
 }
 
-.logo h1 {
-  font-size: 22px;
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
 }
 
-.logo a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
+.service-card img,
+.service-icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
 }
 
-/* NAV LINKS */
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 25px;
-  margin: 0;
-  padding: 0;
+.service-card h3 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    font-weight: 600;
 }
 
-nav ul li a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 15px;
-  position: relative;
-  padding-bottom: 4px;
+.service-card p {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
 }
 
-nav ul li a:hover,
-nav ul li a.active {
-  color: #00b4d8;
+/* ================= STATS SECTION ================= */
+.stats {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #3498db, #2c3e50);
+    color: white;
 }
 
-/* underline effect */
-nav ul li a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0%;
-  height: 2px;
-  background: #00b4d8;
-  transition: 0.3s;
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Desktop */
+    gap: 2rem;
+    text-align: center;
 }
 
-nav ul li a:hover::after,
-nav ul li a.active::after {
-  width: 100%;
+.stat-item {
+    background: rgba(255,255,255,0.12);
+    padding: 2.5rem 1.5rem;
+    border-radius: 12px;
+    transition: 0.3s ease;
 }
 
-/* MOBILE */
-.menu-toggle {
-  display: none;
-  color: #fff;
-  font-size: 22px;
-  cursor: pointer;
+.stat-item:hover {
+    transform: translateY(-8px);
+    background: rgba(255,255,255,0.18);
 }
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-  }
-
-  nav {
-    position: absolute;
-    top: 65px;
-    left: 0;
-    width: 100%;
-    background: #003366;
-    display: none;
-  }
-
-  nav ul {
-    flex-direction: column;
-    padding: 20px;
-  }
-
-  nav ul li {
-    margin-bottom: 12px;
-  }
-
-  nav.show {
-    display: block;
-  }
+.stat-item h3 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
 }
+
+.stat-item p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* ================= TABLET RESPONSIVE ================= */
+@media (max-width: 992px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 per row */
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+@media (max-width: 576px) {
+    .services-grid {
+        grid-template-columns: 1fr; /* 1 per row */
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .service-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .stat-item h3 {
+        font-size: 2.4rem;
+    }
+}
+
 
 </style>
 </header>

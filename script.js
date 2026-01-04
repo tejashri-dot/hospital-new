@@ -45,6 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
   }
+  
 
   // =============================
   // NAVBAR MOBILE TOGGLE

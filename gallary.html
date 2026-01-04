@@ -1,183 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gallery | New City Plus Hospital</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gallery | New City Plus Hospital</title>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #f4f6f9;
-      color: #333;
-    }
+<style>
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    .container {
-      width: 90%;
-      max-width: 1200px;
-      margin: auto;
-    }
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #f4f6f9;
+  color: #333;
+}
 
-    /* =======================
-       NAVBAR
-    ======================= */
-    .site-header {
-      background: #003366;
-      position: sticky;
-      top: 0;
-      z-index: 999;
-    }
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+}
 
-    .nav-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 0;
-    }
+/* ================= NAVBAR ================= */
+.site-header {
+  background: #003366;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 
-    .logo h1 {
-      font-size: 22px;
-      margin: 0;
-    }
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+}
 
-    .logo a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: 600;
-    }
+.logo a {
+  color: #fff;
+  font-size: 22px;
+  font-weight: 600;
+  text-decoration: none;
+}
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 25px;
-      margin: 0;
-      padding: 0;
-    }
+/* DESKTOP NAV */
+#mainNav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+}
 
-    nav ul li a {
-      color: #fff;
-      text-decoration: none;
-      font-size: 15px;
-      position: relative;
-      padding-bottom: 4px;
-    }
+#mainNav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  position: relative;
+  padding-bottom: 4px;
+}
 
-    nav ul li a:hover,
-    nav ul li a.active {
-      color: #00b4d8;
-    }
+#mainNav ul li a:hover,
+#mainNav ul li a.active {
+  color: #00b4d8;
+}
 
-    nav ul li a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0;
-      height: 2px;
-      background: #00b4d8;
-      transition: 0.3s;
-    }
+/* UNDERLINE EFFECT */
+#mainNav ul li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: #00b4d8;
+  transition: width 0.3s ease;
+}
 
-    nav ul li a:hover::after,
-    nav ul li a.active::after {
-      width: 100%;
-    }
+#mainNav ul li a:hover::after,
+#mainNav ul li a.active::after {
+  width: 100%;
+}
 
-    .menu-toggle {
-      display: none;
-      color: #fff;
-      font-size: 22px;
-      cursor: pointer;
-    }
+/* TOGGLE ICON */
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  color: #fff;
+  cursor: pointer;
+}
 
-    @media (max-width: 768px) {
-      .menu-toggle {
-        display: block;
-      }
+/* ================= MOBILE NAV ================= */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
 
-      nav {
-        position: absolute;
-        top: 65px;
-        left: 0;
-        width: 100%;
-        background: #003366;
-        display: none;
-      }
+  /* Hide menu list by default */
+  #mainNav ul {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: #003366;
+    padding: 20px 0;
+    text-align: center;
+  }
 
-      nav ul {
-        flex-direction: column;
-        padding: 20px;
-      }
+  #mainNav ul li {
+    margin: 12px 0;
+  }
 
-      nav ul li {
-        margin-bottom: 12px;
-      }
+  /* Show when toggled */
+  #mainNav.show ul {
+    display: flex;
+  }
+}
 
-      nav.show {
-        display: block;
-      }
-    }
+/* ================= GALLERY ================= */
+.gallery-section {
+  padding: 50px 0;
+}
 
-    /* =======================
-       GALLERY
-    ======================= */
-    .gallery-section {
-      padding: 50px 0;
-    }
+.page-title {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 35px;
+  color: #003366;
+}
 
-    .page-title {
-      text-align: center;
-      font-size: 32px;
-      margin-bottom: 30px;
-      color: #003366;
-    }
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
 
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 15px;
-    }
+.gallery-item {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #ddd;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
 
-    .gallery-grid img {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      border-radius: 10px;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
-      transition: transform 0.3s ease;
-    }
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
 
-    .gallery-grid img:hover {
-      transform: scale(1.05);
-    }
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
 
-    /* =======================
-       FOOTER
-    ======================= */
-    footer {
-      background: #003366;
-      color: #fff;
-      text-align: center;
-      padding: 15px 0;
-      margin-top: 50px;
-    }
-  </style>
+/* ================= FOOTER ================= */
+footer {
+  background: #003366;
+  color: #fff;
+  text-align: center;
+  padding: 25px 0;
+  margin-top: 50px;
+}
+</style>
 </head>
 
 <body>
 
 <header class="site-header">
   <div class="container nav-container">
-
     <div class="logo">
-      <h1><a href="index.html">New City Plus Hospital</a></h1>
+      <a href="index.html">New City Plus Hospital</a>
     </div>
 
     <div class="menu-toggle" id="menuToggle">
@@ -193,7 +196,6 @@
         <li><a href="contact.html">Contact & Appointments</a></li>
       </ul>
     </nav>
-
   </div>
 </header>
 
@@ -203,47 +205,10 @@
       <h2 class="page-title">Hospital Gallery</h2>
 
       <div class="gallery-grid">
-
-        <img src="IMG-20251211-WA0010.jpg" alt="Hospital">
-        <img src="IMG-20251211-WA0011.jpg" alt="Hospital">
-        <img src="IMG-20251211-WA0012.jpg" alt="Hospital">
-        <img src="IMG-20251211-WA0013 (1).jpg" alt="Hospital">
-        <img src="IMG-20251211-WA0014 (1).jpg" alt="Hospital">
-        <img src="IMG-20251211-WA0015.jpg" alt="Hospital">
-        <img src="IMG-20251211-WA0016.jpg" alt="Hospital">
-        <img src="IMG-20251211-WA0017.jpg" alt="Hospital">
-        <img src="IMG-20251211-WA0018.jpg" alt="Hospital">
-        <img src="IMG-20251211-WA0019.jpg" alt="Hospital">
-        <img src="IMG-20251211-WA0020.jpg" alt="Hospital">
-        <img src="IMG-20251211-WA0021.jpg" alt="Hospital">
-         <img src="IMG-20251211-WA0022.jpg" alt="Hospital">
-        <img src="IMG-20251211-WA0023.jpg" alt="Hospital">
-        <img src="IMG-20251211-WA0024.jpg" alt="Hospital">
-        <img src="IMG-20251211-WA0025.jpg" alt="Hospital">
-        <img src="IMG-20251211-WA0026.jpg" alt="Hospital">
-        <img src="IMG-20251211-WA0027.jpg" alt="Hospital">
-        <img src="IMG-20251211-WA0028.jpg" alt="Hospital">
-        <img src="IMG-20251211-WA0029.jpg" alt="Hospital">
-        <img src="IMG-20251211-WA0032.jpg" alt="Hospital">
-        <img src="IMG-20251211-WA0035.jpg" alt="Hospital">
-        <img src="IMG-20251211-WA0041.jpg" alt="Hospital">
-        <img src="IMG-20251211-WA0043.jpg" alt="Hospital">
-         <img src="IMG-20251211-WA0046.jpg" alt="Hospital">
-        <img src="IMG-20251211-WA0047.jpg" alt="Hospital">
-        <img src="IMG-20251211-WA0048.jpg" alt="Hospital">
-        <img src="IMG-20251211-WA0050.jpg" alt="Hospital">
-        <img src="IMG-20251211-WA0068.jpg" alt="Hospital">
-<img src="IMG-20251211-WA0071.jpg" alt="Hospital">
- <img src="IMG-20251211-WA0051.jpg" alt="Hospital">
-        <img src="IMG-20251211-WA0052.jpg" alt="Hospital">
-        <img src="IMG-20251211-WA0066.jpg" alt="Hospital">
-        <img src="IMG-20251211-WA0067.jpg" alt="Hospital">
-        <img src="IMG-20251211-WA0069.jpg" alt="Hospital">
-<img src="IMG-20251211-WA0070.jpg" alt="Hospital">
-<img src="IMG-20251211-WA0077.jpg" alt="Hospital">
-<img src="IMG-20251211-WA0079.jpg" alt="Hospital">
-
-
+        <div class="gallery-item"><img src="IMG-20251211-WA0010.jpg"></div>
+        <div class="gallery-item"><img src="IMG-20251211-WA0011.jpg"></div>
+        <div class="gallery-item"><img src="IMG-20251211-WA0012.jpg"></div>
+        <div class="gallery-item"><img src="IMG-20251211-WA0013.jpg"></div>
       </div>
     </div>
   </section>
@@ -251,9 +216,18 @@
 
 <footer>
   <div class="container">
-    <p>&copy; Designed & Developed By Revere Tech Solutions (OPC) Pvt Ltd</p>
+    <p>&copy; 2024 Designed & Developed By Revere Tech Solutions (OPC) Pvt Ltd</p>
   </div>
 </footer>
+
+<script>
+const menuToggle = document.getElementById("menuToggle");
+const mainNav = document.getElementById("mainNav");
+
+menuToggle.addEventListener("click", () => {
+  mainNav.classList.toggle("show");
+});
+</script>
 
 </body>
 </html>
