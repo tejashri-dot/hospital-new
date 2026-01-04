@@ -1,178 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Gallery | New City Plus Hospital</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery | New City Plus Hospital</title>
 
-<!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
-<style>
-/* ================= RESET ================= */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+  <style>
+    /* =====================
+       BASE
+    ===================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-body {
-  font-family: 'Poppins', sans-serif;
-  background: #f4f6f9;
-  color: #333;
-}
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f4f6f9;
+      color: #333;
+    }
 
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: auto;
-}
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+    }
 
-/* ================= NAVBAR ================= */
-.site-header {
-  background: #003366;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
+    /* =====================
+       NAVBAR
+    ===================== */
+    .site-header {
+      background: #003366;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
 
-.nav-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 70px;
-}
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px; /* Slightly taller for better spacing */
+      position: relative;
+    }
 
-.logo a {
-  color: #fff;
-  font-size: 22px;
-  font-weight: 600;
-  text-decoration: none;
-}
+    .logo h1 {
+      font-size: 22px;
+    }
 
-/* DESKTOP NAV */
-#mainNav ul {
-  list-style: none;
-  display: flex;
-  gap: 25px;
-}
+    .logo a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+    }
 
-#mainNav ul li a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 15px;
-  position: relative;
-  padding-bottom: 4px;
-}
+    /* DESKTOP NAV */
+    #mainNav ul {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
 
-#mainNav ul li a:hover,
-#mainNav ul li a.active {
-  color: #00b4d8;
-}
+    #mainNav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 15px;
+      position: relative;
+      padding-bottom: 4px;
+      transition: color 0.3s;
+    }
 
-/* UNDERLINE EFFECT */
-#mainNav ul li a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0%;
-  height: 2px;
-  background: #00b4d8;
-  transition: width 0.3s ease;
-}
+    #mainNav ul li a:hover,
+    #mainNav ul li a.active {
+      color: #00b4d8;
+    }
 
-#mainNav ul li a:hover::after,
-#mainNav ul li a.active::after {
-  width: 100%;
-}
+    /* MENU TOGGLE (HIDDEN ON DESKTOP) */
+    .menu-toggle {
+      display: none;
+      color: #fff;
+      font-size: 24px;
+      cursor: pointer;
+    }
 
-/* TOGGLE ICON */
-.menu-toggle {
-  display: none;
-  font-size: 24px;
-  color: #fff;
-  cursor: pointer;
-}
+    /* =====================
+       MOBILE NAV FIX
+    ===================== */
+    @media (max-width: 992px) { /* Increased breakpoint for tablets/phones */
+      .menu-toggle {
+        display: block;
+      }
 
-/* ================= MOBILE NAV ================= */
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-  }
+      #mainNav {
+        position: absolute;
+        top: 80px; /* Align with header height */
+        left: 0;
+        width: 100%;
+        background: #003366;
+        display: none; /* Hidden by default */
+        border-top: 1px solid rgba(255,255,255,0.1);
+        box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+      }
 
-  /* Hide menu list by default */
-  #mainNav ul {
-    display: none;
-    flex-direction: column;
-    position: absolute;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    background: #003366;
-    padding: 20px 0;
-    text-align: center;
-  }
+      /* When JS toggles this class */
+      #mainNav.show {
+        display: block;
+      }
 
-  #mainNav ul li {
-    margin: 12px 0;
-  }
+      #mainNav ul {
+        flex-direction: column;
+        gap: 0;
+        padding: 0;
+      }
 
-  /* Show when toggled */
-  #mainNav.show ul {
-    display: flex;
-  }
-}
+      #mainNav ul li {
+        width: 100%;
+      }
 
-/* ================= GALLERY ================= */
-.gallery-section {
-  padding: 50px 0;
-}
+      #mainNav ul li a {
+        display: block;
+        padding: 15px 20px;
+        font-size: 16px;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+      }
 
-.page-title {
-  text-align: center;
-  font-size: 32px;
-  margin-bottom: 35px;
-  color: #003366;
-}
+      #mainNav ul li a:hover {
+        background: rgba(255,255,255,0.1);
+      }
+      
+      #mainNav ul li a::after {
+        display: none; /* Hide the underline animation on mobile */
+      }
+    }
 
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-}
+    /* =====================
+       GALLERY
+    ===================== */
+    .gallery-section {
+      padding: 50px 0;
+    }
 
-.gallery-item {
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  border-radius: 12px;
-  background: #ddd;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
+    .page-title {
+      text-align: center;
+      font-size: 32px;
+      margin-bottom: 35px;
+      color: #003366;
+    }
 
-.gallery-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
-}
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
 
-.gallery-item:hover img {
-  transform: scale(1.1);
-}
+    .gallery-item {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      border-radius: 12px;
+      background: #ddd;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
 
-/* ================= FOOTER ================= */
-footer {
-  background: #003366;
-  color: #fff;
-  text-align: center;
-  padding: 25px 0;
-  margin-top: 50px;
-}
-</style>
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.1);
+    }
+
+    /* =====================
+       FOOTER
+    ===================== */
+    footer {
+      background: #003366;
+      color: #fff;
+      text-align: center;
+      padding: 25px 0;
+      margin-top: 50px;
+    }
+  </style>
 </head>
 
 <body>
@@ -180,13 +198,15 @@ footer {
 <header class="site-header">
   <div class="container nav-container">
     <div class="logo">
-      <a href="index.html">New City Plus Hospital</a>
+      <h1><a href="index.html">New City Plus Hospital</a></h1>
     </div>
 
+    <!-- Toggle Button -->
     <div class="menu-toggle" id="menuToggle">
       <i class="fas fa-bars"></i>
     </div>
 
+    <!-- Navigation List -->
     <nav id="mainNav">
       <ul>
         <li><a href="index.html">Home</a></li>
@@ -205,10 +225,45 @@ footer {
       <h2 class="page-title">Hospital Gallery</h2>
 
       <div class="gallery-grid">
-        <div class="gallery-item"><img src="IMG-20251211-WA0010.jpg"></div>
-        <div class="gallery-item"><img src="IMG-20251211-WA0011.jpg"></div>
-        <div class="gallery-item"><img src="IMG-20251211-WA0012.jpg"></div>
-        <div class="gallery-item"><img src="IMG-20251211-WA0013.jpg"></div>
+        <div class="gallery-item"><img src="IMG-20251211-WA0010.jpg" alt="Gallery Image"></div>
+        <div class="gallery-item"><img src="IMG-20251211-WA0011.jpg" alt="Gallery Image"></div>
+        <div class="gallery-item"><img src="IMG-20251211-WA0012.jpg" alt="Gallery Image"></div>
+<div class="gallery-item"><img src="IMG-20251211-WA0013 (1).jpg" alt="Hospital"></div>
+        <div class="gallery-item"><img src="IMG-20251211-WA0014 (1).jpg" alt="Hospital"></div>
+        <div class="gallery-item"><img src="IMG-20251211-WA0015.jpg" alt="Hospital"></div>
+        <div class="gallery-item"><img src="IMG-20251211-WA0016.jpg" alt="Hospital"></div>
+        <div class="gallery-item"><img src="IMG-20251211-WA0017.jpg" alt="Hospital"></div>
+        <div class="gallery-item"><img src="IMG-20251211-WA0018.jpg" alt="Hospital"></div>
+        <div class="gallery-item"><img src="IMG-20251211-WA0019.jpg" alt="Hospital"></div>
+        <div class="gallery-item"><img src="IMG-20251211-WA0020.jpg" alt="Hospital"></div>
+        <div class="gallery-item"><img src="IMG-20251211-WA0021.jpg" alt="Hospital"></div>
+        <div class="gallery-item"><img src="IMG-20251211-WA0022.jpg" alt="Hospital"></div>
+        <div class="gallery-item"><img src="IMG-20251211-WA0023.jpg" alt="Hospital"></div>
+        <div class="gallery-item"><img src="IMG-20251211-WA0024.jpg" alt="Hospital"></div>
+        <div class="gallery-item"><img src="IMG-20251211-WA0025.jpg" alt="Hospital"></div>
+        <div class="gallery-item"><img src="IMG-20251211-WA0026.jpg" alt="Hospital"></div>
+        <div class="gallery-item"><img src="IMG-20251211-WA0027.jpg" alt="Hospital"></div>
+        <div class="gallery-item"><img src="IMG-20251211-WA0028.jpg" alt="Hospital"></div>
+        <div class="gallery-item"><img src="IMG-20251211-WA0029.jpg" alt="Hospital"></div>
+        <div class="gallery-item"><img src="IMG-20251211-WA0032.jpg" alt="Hospital"></div>
+        <div class="gallery-item"><img src="IMG-20251211-WA0035.jpg" alt="Hospital"></div>
+        <div class="gallery-item"><img src="IMG-20251211-WA0041.jpg" alt="Hospital"></div>
+        <div class="gallery-item"><img src="IMG-20251211-WA0043.jpg" alt="Hospital"></div>
+        <div class="gallery-item"><img src="IMG-20251211-WA0046.jpg" alt="Hospital"></div>
+        <div class="gallery-item"><img src="IMG-20251211-WA0047.jpg" alt="Hospital"></div>
+        <div class="gallery-item"><img src="IMG-20251211-WA0048.jpg" alt="Hospital"></div>
+        <div class="gallery-item"><img src="IMG-20251211-WA0050.jpg" alt="Hospital"></div>
+        <div class="gallery-item"><img src="IMG-20251211-WA0051.jpg" alt="Hospital"></div>
+        <div class="gallery-item"><img src="IMG-20251211-WA0052.jpg" alt="Hospital"></div>
+        <div class="gallery-item"><img src="IMG-20251211-WA0066.jpg" alt="Hospital"></div>
+        <div class="gallery-item"><img src="IMG-20251211-WA0067.jpg" alt="Hospital"></div>
+        <div class="gallery-item"><img src="IMG-20251211-WA0068.jpg" alt="Hospital"></div>
+        <div class="gallery-item"><img src="IMG-20251211-WA0069.jpg" alt="Hospital"></div>
+        <div class="gallery-item"><img src="IMG-20251211-WA0070.jpg" alt="Hospital"></div>
+        <div class="gallery-item"><img src="IMG-20251211-WA0071.jpg" alt="Hospital"></div>
+        <div class="gallery-item"><img src="IMG-20251211-WA0077.jpg" alt="Hospital"></div>
+        <div class="gallery-item"><img src="IMG-20251211-WA0079.jpg" alt="Hospital"></div>
+    
       </div>
     </div>
   </section>
@@ -221,12 +276,33 @@ footer {
 </footer>
 
 <script>
-const menuToggle = document.getElementById("menuToggle");
-const mainNav = document.getElementById("mainNav");
+  const menuToggle = document.getElementById('menuToggle');
+  const mainNav = document.getElementById('mainNav');
+  const toggleIcon = menuToggle.querySelector('i');
 
-menuToggle.addEventListener("click", () => {
-  mainNav.classList.toggle("show");
-});
+  menuToggle.addEventListener('click', () => {
+    // Toggle the 'show' class to display/hide the menu
+    mainNav.classList.toggle('show');
+
+    // Toggle the icon between bars and X
+    if (mainNav.classList.contains('show')) {
+      toggleIcon.classList.remove('fa-bars');
+      toggleIcon.classList.add('fa-times');
+    } else {
+      toggleIcon.classList.remove('fa-times');
+      toggleIcon.classList.add('fa-bars');
+    }
+  });
+
+  // Close menu when a link is clicked (useful for mobile)
+  const navLinks = document.querySelectorAll('#mainNav ul li a');
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      mainNav.classList.remove('show');
+      toggleIcon.classList.add('fa-bars');
+      toggleIcon.classList.remove('fa-times');
+    });
+  });
 </script>
 
 </body>
