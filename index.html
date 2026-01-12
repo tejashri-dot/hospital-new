@@ -33,25 +33,33 @@
   <meta name="twitter:image" content="https://www.newcityplushospital.com/logo.png" />
 
   <!-- SCHEMA (HOSPITAL) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Hospital",
-    "name": "New City Plus Hospital",
-    "url": "https://www.newcityplushospital.com",
-    "logo": "https://www.newcityplushospital.com/logo.png",
-    "description": "Multispecialty hospital offering emergency care and advanced medical services",
-    "medicalSpecialty": [
-      "EmergencyMedicine",
-      "Cardiology",
-      "Orthopedic",
-      "Neurology",
-      "Gynecology",
-      "Pediatrics",
-      "Surgery"
-    ]
+ <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Hospital",
+  "@id": "https://www.newcityplushospital.com/#hospital",
+  "name": "New City Plus Hospital",
+  "url": "https://www.newcityplushospital.com",
+  "logo": "https://www.newcityplushospital.com/logo.png",
+  "image": "https://www.newcityplushospital.com/logo.png",
+  "description": "New City Plus Hospital is a trusted multispecialty hospital offering 24/7 emergency services and advanced medical care.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Add Street Address Here",
+    "addressLocality": "Add City",
+    "addressRegion": "Add State",
+    "postalCode": "000000",
+    "addressCountry": "IN"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+91-XXXXXXXXXX",
+    "contactType": "customer service",
+    "availableLanguage": ["English"]
   }
-  </script>
+}
+</script>
+
 
   <!-- FONT AWESOME -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
