@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // EMAILJS INITIALIZATION
   // =============================
   if (typeof emailjs !== "undefined") {
-    emailjs.init("BrQ5-jaAzRl0OrP-B"); // Your EmailJS Public Key
+    emailjs.init("-1nUKk9w_X67c08-Q"); // Your EmailJS Public Key
   }
 
   const appointmentForm = document.getElementById("appointmentForm");
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
       };
 
       emailjs
-        .send("service_e2jroob", "template_he2jcjm", formData)
+        .send("service_hf82rbp", "template_qapid48", formData)
         .then(() => {
           const popup = document.getElementById("successPopup");
           if (popup) {
